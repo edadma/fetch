@@ -17,8 +17,8 @@ ThisBuild / sonatypeProfileName := "io.github.edadma"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
-    url("https://github.com/edadma/cross_template"),
-    "scm:git@github.com:edadma/cross_template.git",
+    url("https://github.com/edadma/fetch"),
+    "scm:git@github.com:edadma/fetch.git",
   ),
 )
 ThisBuild / developers := List(
@@ -30,7 +30,7 @@ ThisBuild / developers := List(
   ),
 )
 
-ThisBuild / homepage := Some(url("https://github.com/edadma/cross_template"))
+ThisBuild / homepage := Some(url("https://github.com/edadma/fetch"))
 
 ThisBuild / publishTo := {
   val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
@@ -38,10 +38,10 @@ ThisBuild / publishTo := {
   else localStaging.value
 }
 
-lazy val cross_template = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+lazy val fetch = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("."))
   .settings(
-    name := "cross_template",
+    name := "fetch",
     scalacOptions ++=
       Seq(
         "-deprecation",
@@ -85,9 +85,9 @@ lazy val cross_template = crossProject(JSPlatform, JVMPlatform, NativePlatform)
 
 lazy val root = project
   .in(file("."))
-  .aggregate(cross_template.js, cross_template.jvm, cross_template.native)
+  .aggregate(fetch.js, fetch.jvm, fetch.native)
   .settings(
-    name                := "cross_template",
+    name                := "fetch",
     publish / skip      := true,
     publishLocal / skip := true,
   )
