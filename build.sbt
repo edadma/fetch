@@ -52,23 +52,16 @@ lazy val fetch = crossProject(JSPlatform, JVMPlatform, NativePlatform)
         "-language:existentials",
         "-language:dynamics",
       ),
-//    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
-//    libraryDependencies ++= Seq(
-//      "io.github.edadma" %%% "cross_platform" % "0.0.14"
-//    ),
-    libraryDependencies ++= Seq(
-//      "com.github.scopt" %%% "scopt" % "4.1.0",
-//      "com.lihaoyi" %%% "pprint" % "0.9.3" % "test",
-    ),
-    publishMavenStyle      := true,
-    Test / publishArtifact := false,
+    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
+    publishMavenStyle                       := true,
+    Test / publishArtifact                  := false,
   )
   .jvmSettings(
     libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0" % "provided",
   )
   .nativeSettings(
-    libraryDependencies += "io.github.cquiroz" %%% "scala-java-time" % "2.6.0",
-    libraryDependencies += "org.scala-js"       %% "scalajs-stubs"   % "1.1.0" % "provided",
+    libraryDependencies += "org.scala-js"      %% "scalajs-stubs" % "1.1.0" % "provided",
+    libraryDependencies += "io.github.edadma" %%% "libcurl"       % "0.0.4",
   )
   .jsSettings(
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
@@ -77,10 +70,9 @@ lazy val fetch = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     scalaJSLinkerConfig ~= { _.withSourceMap(false) },
     //    Test / scalaJSUseMainModuleInitializer := true,
     //    Test / scalaJSUseTestModuleInitializer := false,
-    Test / scalaJSUseMainModuleInitializer      := false,
-    Test / scalaJSUseTestModuleInitializer      := true,
-    scalaJSUseMainModuleInitializer             := true,
-    libraryDependencies += "io.github.cquiroz" %%% "scala-java-time" % "2.6.0",
+    Test / scalaJSUseMainModuleInitializer := false,
+    Test / scalaJSUseTestModuleInitializer := true,
+    scalaJSUseMainModuleInitializer        := true,
   )
 
 lazy val root = project
