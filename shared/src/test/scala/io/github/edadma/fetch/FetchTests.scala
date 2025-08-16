@@ -67,15 +67,11 @@ class FetchTests extends AsyncFreeSpec with Matchers {
 
     "should debug network errors" in {
       fetch("https://nonexistent-domain-12345.com").map { response =>
-        println(s"Unexpected success: status=${response.status}, ok=${response.ok}")
-        println(s"Body: ${response.bodyAsString}")
         fail("Expected this to throw an exception")
       }.recover {
         case e: FetchException =>
-          println(s"Got expected FetchException: ${e.getMessage}")
           succeed
         case other =>
-          println(s"Got unexpected error: ${other.getClass.getSimpleName}: ${other.getMessage}")
           fail(s"Wrong exception type: $other")
       }
     }

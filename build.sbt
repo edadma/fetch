@@ -61,7 +61,7 @@ lazy val fetch = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   )
   .nativeSettings(
     libraryDependencies += "org.scala-js"      %% "scalajs-stubs" % "1.1.0" % "provided",
-    libraryDependencies += "io.github.edadma" %%% "libcurl"       % "0.0.4",
+    libraryDependencies += "io.github.edadma" %%% "libcurl"       % "0.0.5",
   )
   .jsSettings(
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
